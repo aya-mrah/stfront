@@ -1,0 +1,56 @@
+<div style="width: 600px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="categorie.nom"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Qantité">Qantité</label>
+        <input
+          class="form-control"
+          id="Qantité"
+          required
+          [(ngModel)]="categorie.qt"
+          name="Qantité"
+        />
+      </div>
+      <div class="form-group">
+        <label for="date_creation">Date de creation</label>
+        <input
+          class="form-control"
+          id="date_creation"
+          required
+          [(ngModel)]="categorie.date_creation"
+          name="date_creation"
+          disabled />
+      </div>
+      <div class="form-group">
+        <label for="date_mmodif">Date modification(*)</label>
+        <input type="datetime-local"
+          class="form-control"
+          id="date_mmodif"
+          required
+          [(ngModel)]="categorie.date_mmodif"
+          name="date_mmodif"
+        />
+      </div>
+
+
+      <button (click)="onSubmit()" class="btn btn-success">Modifier</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>catégorie est créée avec success!</h3>
+      <button class="btn btn-success" (click)="getCategoriesList()">Retour</button>
+    </div>
+  </div>
+</div>

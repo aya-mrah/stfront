@@ -1,0 +1,36 @@
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="categorie.nom"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Qantité">Qantité</label>
+        <input
+          class="form-control"
+          id="Qantité"
+          required
+          [(ngModel)]="categorie.qt"
+          name="Qantité"
+        />
+      </div>
+
+
+      <button (click)="createCategorie()" class="btn btn-success">Create</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>catégorie est créée avec success!</h3>
+      <button class="btn btn-success" (click)="newCategorie()">Ajouter de Nouveau</button>
+    </div>
+  </div>
+</div>

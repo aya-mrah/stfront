@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>front<</title>
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a class="clickable">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" *ngIf="this.authService.isAdmin()" data-toggle="dropdown" href="#">Produits
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a class="clickable" routerLink="products">Liste Produits</a></li>
+          <li><a class="clickable">Disponibles</a></li>
+        </ul>
+      </li>
+      <li><a *ngIf="this.authService.isAdmin()"  routerLink="categories">Categories</a></li>
+      <li><a routerLink="/caddy">Fournisseurs</a></li>
+      <li><a routerLink="/caddy">Caddy</a></li>
+      <li><a class="clickable">Contact</a></li>
+    </ul>
+    <ul *ngIf="!this.authService.isAuthenticated()" class=" nav navbar-nav pull-right">
+      <li>
+        <a (click)="onLogin()"class="btn">
+          <span class="glyphicon glyphicon-log-in"></span>
+        </a>
+      </li>
+    </ul>
+    <ul  *ngIf="this.authService.isAuthenticated()"class=" nav navbar-nav pull-right">
+      <li>
+        <a (click)="onLogout()" class="btn">
+          <span class="glyphicon glyphicon-log-out"></span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class=" nav navbar-nav pull-right">
+      <li>
+        <a >
+          <span class="badge"></span>
+          <img class="img-circle img-thumbnail img-rounded" src="assets/images/caddy.png">
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class="row">
+  <div class="col-md-2"  id="navigation">
+    <ul class="list-group" *ngFor="let c of categories"  (click)="afficherlesProduit(c.id)">
+      <li class="active"  id="actif" class="list-group-item clickable ">
+      <a width="100%"> {{c.nom}}</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="col-md-10">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+</div>
+</html>

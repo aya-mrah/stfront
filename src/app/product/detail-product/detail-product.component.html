@@ -1,0 +1,102 @@
+<div *ngIf="currentproduct">
+  <div class="panel panel-default" *ngIf="mode==0" >
+    <div class="panel-heading">Fiche Produit : {{currentproduct.nom}}
+      <span class="glyphicon glyphicon-edit pull-right btn" ></span>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-5">
+        <img class="img-thumbnail img-rounded btn"  [src]="this.produitService.baseUrl+'/photoProduct/'+currentproduct.id"/>
+        <div >
+          <button *ngIf="!editPhoto" (click)="onEditPhoto(currentproduct)">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+          <span *ngIf="editPhoto">
+            <input type="file" (change)="onSelectedFile($event)">
+            <button class="btn btn-success btn-sm" (click)="uploadPhoto()">
+              <span class="glyphicon glyphicon-upload"></span>
+            </button>
+            {{progress}}
+          </span>
+        </div>
+
+
+      </div>
+      <div class="col-md-7">
+        <div class="panel panel-default" style="min-height: 300px">
+          <div class="panel-body">
+            <label>Nom Produit :</label> {{currentproduct.nom }}
+          </div>
+          <div class="panel-body">
+            <label>Quantité :</label> {{currentproduct.qt }}
+          </div>
+          <div class="panel-body">
+            <label>Date de création :</label> {{currentproduct.date_cre | date:'yyyy-MM-dd HH:mm:ss '}}
+          </div>
+          <div class="panel-body">
+            <label>Catégorie Produit:</label> {{currentproduct.categorie.nom }}
+          </div>
+          <div class="panel-body">
+            <label>Date de modification :</label>{{currentproduct.date_mod | date:'yyyy-MM-dd HH:mm:ss '}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!--
+<div >
+  <div class="panel panel-default" >
+    <div class="panel-heading">Fiche Produit : {{currentproduct.nom}}
+      <span class="glyphicon glyphicon-edit pull-right btn" ></span>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-5">
+
+        </div>
+
+
+          <form >
+
+            <div class="panel panel-default" style="min-height: 300px">
+              <div class="panel-body">
+                <label>Quantité :</label> {{currentproduct.qt }}
+              </div>
+              <div class="panel-body">
+                <label>Date de création :</label> {{currentproduct.date_cre | date:'yyyy-MM-dd HH:mm:ss '}}
+              </div>
+              <div class="panel-body">
+                <label>Date de modification :</label>{{currentproduct.date_mod | date:'yyyy-MM-dd HH:mm:ss '}}
+              </div>
+              <div class="panel-body">
+              <img class="img-thumbnail img-rounded btn"  [src]="this.produitService.baseUrl+'/photoProduct/'+currentproduct.id"/>
+              </div>
+              <button *ngIf="!editPhoto" (click)="onEditPhoto(currentproduct)">
+                <span class="glyphicon glyphicon-edit"></span>
+              </button>
+              <span *ngIf="editPhoto">
+            <input type="file" (change)="onSelectedFile($event)">
+            <button class="btn btn-success btn-sm" (click)="uploadPhoto()">
+              <span class="glyphicon glyphicon-upload"></span>
+            </button>
+            {{progress}}
+          </span>
+            </div>
+
+          </form>
+      <div class="col-md-8">
+
+      </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div >
+
+</div>
+-->

@@ -1,0 +1,76 @@
+<div style="width: 600px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="produit.nom"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Qantité">Qantité</label>
+        <input
+          class="form-control"
+          id="Qantité"
+          required
+          [(ngModel)]="produit.qt"
+          name="Qantité"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label >Disponibilité(*)</label>
+
+        <div class="form-group">
+
+
+          <div >
+            <label style="margin-left: 40px">
+              <input  type="radio" required [(ngModel)]="produit.Disponible"   id="titulaireoui" name="disponible" value="true" >
+
+              <span>Oui</span>
+
+            </label>
+
+            <label style="margin-left: 40px">
+              <input  type="radio" required  [value]="produit.Disponible"   id="titulairenon" name="disponible" >
+
+              <span>NON</span>
+
+            </label>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="categorie">categorie</label>
+          <select id="categorie" name="categorie" [(ngModel)]="produit.categorie"  class="form-control form-select browser-default custom-select">
+
+            <option [ngValue]="undefined"  >  select categorie </option>
+            <option *ngFor="let categorie of categories"  [ngValue]="categorie" >   {{categorie.nom}} </option>
+          </select>
+
+        </div>
+
+
+
+
+
+
+        <button (click)="onSubmit()" class="btn btn-success">add</button>
+      </div>
+
+      <div *ngIf="submitted">
+        <h3>catégorie est créée avec success!</h3>
+        <button class="btn btn-success" (click)="getProduitsList()">Retour</button>
+      </div>
+    </div>
+  </div>
+</div>

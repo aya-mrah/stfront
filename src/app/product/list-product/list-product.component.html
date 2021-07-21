@@ -1,0 +1,98 @@
+
+<!--
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="panel panel-primary">
+  <div class="panel-heading" >
+    <h2>Liste de Produits</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-sm-4 createSegment">
+      <a  class="btn dim_button create_new"  [routerLink]="['/produits']"> <span class="glyphicon glyphicon-plus"></span> Ajouter Equipe</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+
+        <th>ID</th>
+        <th>Pays</th>
+        <th></th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let produit of produits  ">
+
+        <td>{{ produit.id}}</td>
+        <td>{{ produit.nom }}</td>
+        <td>   <a title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        </td>
+
+
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+-->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <button  [routerLink]="['/productadd']"class="btn btn-sm btn-success">Add products</button>
+        </div>
+        <div class="col-md-4 ">
+          <button class="btn btn-danger btn-block" (click)="downloadPDF()">Download PDF</button>
+          <button  class="btn btn-success btn-block" (click)="exportexcel()">Export to Excel</button>
+        </div>
+
+        <div class="col-9">
+
+
+      <h4 *ngIf="produits" class="col-9" >Liste de Produits</h4> </div>
+      <div class="row" id="htmlData" #htmlData>
+        <table class="table table-hover"  id="excel-table" *ngIf="produits">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Disponibilité</th>
+            <th scope="col">Date de création : </th>
+            <th scope="col">Categorie</th>
+            <th colspan="2">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of produits">
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.nom}}</td>
+           <td>{{p.qt}}</td>
+            <td>{{p.disponible}}</td>
+            <td>{{ p.date_cre | date:'yyyy-MM-dd HH:mm:ss ' }}</td>
+              <td>{{p.categorie.nom}}</td>
+
+              <td>
+                <a (click)="updatedCategorie(p.id)"class="btn btn-info tooltips"  name="Edit" title="Edit" data-placement="top"  data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+              </td>
+              <td>
+                <a  class="btn btn-success tooltips"  (click)="getProduitById(p.id)" title="Détails" name="Détails" data-toggle="tooltip"><i class="glyphicon glyphicon-eye-open"></i></a>
+              <td>
+
+                <a (click)="deleteProduit(p.id)"  class="btn btn-danger tooltips"  name="Supprimer" title="Supprimer"data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    </div></div>

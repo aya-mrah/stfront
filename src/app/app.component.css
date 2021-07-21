@@ -1,0 +1,34 @@
+.clickable{
+  cursor: pointer;
+}
+
+html {
+    font-size: 14px;}
+
+
+
+#colored {
+
+  background-color: black;
+  color:#FFFFFF;
+}
+
+#active{
+background-color: red;
+}
+
+#navigation li a:hover {
+
+
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-right: 11px;
+    color: #383a479e;
+}
+
+
+a {
+    color: #333;
+    text-decoration: none;
+}

@@ -1,0 +1,108 @@
+<div style="width: 600px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="produit.nom"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Qantité">Qantité</label>
+        <input
+          class="form-control"
+          id="Qantité"
+          required
+          [(ngModel)]="produit.qt"
+          name="Qantité"
+        />
+      </div>
+      <div class="form-group">
+        <label for="date_creation">Date de creation</label>
+        <input
+          class="form-control"
+          id="date_creation"
+          required
+          [(ngModel)]="produit.date_cre"
+          name="date_creation"
+          disabled />
+      </div>
+      <div class="form-group">
+        <label for="date_mod">Date modification(*)</label>
+        <input type="datetime-local"
+               class="form-control"
+               id="date_mod"
+               required
+               [(ngModel)]="produit.date_mod"
+               name="date_mod"
+        /></div>
+
+     <div class="form-group">
+        <label for="date_mod">Disponibilité(*)</label>
+
+       <div class="form-group">
+
+
+         <div *ngIf="produit.disponible==false">
+           <label style="margin-left: 40px">
+             <input  type="radio" required [(ngModel)]="produit.disponible"   id="titulaireoui" name="disponible" value="true" [attr.checked]="produit.disponible==1 ? true : null">
+
+             <span>Oui</span>
+
+           </label>
+
+           <label style="margin-left: 40px">
+             <input  type="radio" required  [value]="produit.disponible"   id="titulairenon" name="disponible" [attr.checked]="produit.disponible==0 ? true : null">
+
+             <span>NON</span>
+
+           </label>
+         </div>
+
+         <div *ngIf="produit.disponible==true">
+           <label style="margin-left: 40px">
+             <input  type="radio" required [value]="produit.disponible"  id="titulaire1" name="disponible" value="true" [attr.checked]="produit.disponible==1 ? true : null">
+
+             <span>Oui</span>
+
+           </label>
+
+           <label style="margin-left: 40px">
+             <input  type="radio" required  [(ngModel)]="produit.disponible"   id="titulaire2" name="disponible" [attr.checked]="produit.disponible==0 ? true : null">
+
+             <span>NON</span>
+
+           </label>
+         </div>
+
+
+
+       </div>
+
+      <div class="form-group">
+        <label for="categorie">categorie</label>
+        <select id="categorie" name="categorie" [(ngModel)]="produit.categorie"  class="form-control form-select browser-default custom-select">
+
+          <option hidden [ngValue]="produit.categorie"  [attr.selected]="true">  {{produit.categorie.nom}} </option>
+          <option *ngFor="let categorie of categories"  [ngValue]="categorie"  [attr.selected]="produit.categorie.nom==categorie.nom ? true : null">   {{categorie.nom}} </option>
+        </select>
+
+      </div>
+
+
+
+      <button (click)="onSubmit()" class="btn btn-success">Modifier</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h3>catégorie est créée avec success!</h3>
+      <button class="btn btn-success" (click)="getProduitsList()">Retour</button>
+    </div>
+  </div>
+</div>

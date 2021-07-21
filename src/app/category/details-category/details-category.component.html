@@ -1,0 +1,24 @@
+<div style="width: 500px; margin: auto;">
+  <div *ngIf="currentproduct" class="edit-form">
+    <h4>Categorie Détails</h4>
+    <form>
+      <div class="form-group">
+        <label >Nom</label>
+        {{currentproduct.nom}}
+      </div>
+      <div class="form-group">
+        <label >Description</label>
+       {{currentproduct.qt}}
+      </div>
+      <div class="form-group">
+        <label >Date de création</label>
+        {{currentproduct.date_creation}}
+
+      </div>
+      <div class="form-group" *ngIf="currentproduct.date_mmodif!=null">
+        <label >Date de modificayion</label>
+        {{ currentproduct.date_mmodif| date:'yyyy-MM-dd HH:mm:ss ' }}
+
+      </div>
+
+    </form></div></div>

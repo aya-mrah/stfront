@@ -1,0 +1,87 @@
+<!--
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="panel panel-primary">
+  <div class="panel-heading" >
+    <h2>List Equipe</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-sm-4 createSegment">
+      <a  class="btn dim_button create_new"  [routerLink]="['/produits']"> <span class="glyphicon glyphicon-plus"></span> Ajouter Equipe</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Disponibilité</th>
+        <th>Date Création</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let c of categories  ">
+
+        <td>{{ c.id}}</td>
+        <td>{{ c.nom }}</td>
+        <td>{{ c.qt }}</td>
+        <td>{{ c.disponible }}</td>
+        <td>{{ c.date_cre }}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+-->
+<div *ngIf="categories">
+  <div><h3></h3></div>
+  <div *ngFor="let p of categories">
+    <div class="col-md-4">
+      <div class="panel panel-default heigted">
+        <div class="panel-heading">{{p.nom}}</div>
+
+        <div class="col-md-5">
+          <img class="img-thumbnail img-rounded btn"  [src]="this.s.baseUrl+'/photoProduct/'+p.id"/>
+        </div>
+        <div class="panel-body">
+         Article n°:
+          {{ p.id }}
+          <div>
+        <!--  <label> Créer : </label>   {{ p.date_cre | date:'yyyy-MM-dd HH:mm:ss ' }}
+          </div>
+          <div *ngIf="p.date_mod!=null">
+            <label> Modifier : </label>   {{ p.date_mod | date:'yyyy-MM-dd HH:mm:ss' }}
+          </div>-->
+          <div>
+            <label>Disponibilité : </label>{{ p.disponible }}
+          </div>
+          <div>
+        <span *ngIf="p.promotion">
+                <img src="assets/images/promo.png" class="img-thumbnail img-circle" height="30">
+              </span>
+            <span *ngIf="p.selected">
+                <img src="assets/images/favorite.png" class="img-thumbnail img-circle" height="30">
+              </span>
+            <span *ngIf="p.available">
+                <img src="assets/images/available.png" class="img-thumbnail img-circle"  height="30">
+              </span>
+          </div>
+          <div>
+            <form #f="ngForm" >
+              <label class="control-label">Quantité :</label>{{p.qt}}&nbsp;&nbsp;
+              <button>
+                <img src="assets/caddy.png">
+              </button>
+            </form>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
